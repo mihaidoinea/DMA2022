@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Laboratories"
-include ':app'
+include ':dma01'
