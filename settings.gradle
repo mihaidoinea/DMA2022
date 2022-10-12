@@ -16,3 +16,4 @@ rootProject.name = "Laboratories"
 include ':dma01'
 include ':dma02'
 include ':s1084s03'
+include ':g1083s03'
