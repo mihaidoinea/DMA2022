@@ -10,7 +10,7 @@
         android:theme="@style/Theme.DMA2022">
         <activity
             android:name=".SecondActivity"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.SEND"/>
                 <category android:name="android.intent.category.DEFAULT"/>
