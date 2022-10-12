@@ -14,8 +14,16 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         Intent intent = getIntent();
-        String param1 = intent.getStringExtra("param1");
-        Toast.makeText(this,"Value: " + param1, Toast.LENGTH_LONG).show();
+        String action = intent.getAction();
+        if(action == Intent.ACTION_SEND)
+        {
+            String s = intent.getClipData().getItemAt(0).toString();
+            Toast.makeText(this,"Value: " + s, Toast.LENGTH_LONG).show();
+        }
+        else {
+            String param1 = intent.getStringExtra("param1");
+            Toast.makeText(this, "Value: " + param1, Toast.LENGTH_LONG).show();
+        }
     }
 
     public void btClick(View view)
