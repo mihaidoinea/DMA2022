@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Understanding Android Intents</string>
+    <string name="createExpl">Create Explicit Intent</string>
+    <string name="createImpl">Create Implicit Intent</string>
+    <string name="mainActTItle">Basic Intents</string>
+    <string name="strDestActivityTitle">Destination Activity</string>
+    <string name="strMediaTitle">Media Intents</string>
+    <string name="btnStartCamera">Start Camera for Photo</string>
+    <string name="strMediaIntents">Media Intents</string>
+    <string name="strAppIntents">App Intents</string>
+    <string name="strDataIntents">Data Intents</string>
+    <string name="strCommonIntentsTitle">Common Intents</string>
+</resources>
