@@ -121,6 +121,7 @@ public class AppsActivity extends AppCompatActivity implements View.OnClickListe
             i.putExtra(SearchManager.QUERY, queryStr);
 
             startActivity(i);
+
         }
         else if (btnClick == R.id.btnPendIntent) {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "my_channel");
