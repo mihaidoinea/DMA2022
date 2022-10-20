@@ -13,10 +13,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     class MyOnClickListener implements View.OnClickListener
     {
-
         @Override
         public void onClick(View view) {
-
+            Toast.makeText(getApplicationContext(),"Hello from btnSave",
+                    Toast.LENGTH_LONG).show();
         }
     }
 
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
+        Toast.makeText(this,"Hello from btnSave",
+                Toast.LENGTH_LONG).show();
     }
 }
