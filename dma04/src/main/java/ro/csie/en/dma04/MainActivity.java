@@ -13,6 +13,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     Random random;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
