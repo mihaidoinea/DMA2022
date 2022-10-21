@@ -3,6 +3,9 @@ package ro.csie.en.dma02;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,8 +23,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnClick(View view)
     {
-        Intent intent  = new Intent(this, SecondActivity.class);
-        startActivity(intent);
+//        Intent intent  = new Intent(this, SecondActivity.class);
+//        startActivity(intent);
+        Uri uri = null;
+        if(view.getId() == R.id.ivCat)
+        {
+            uri = Uri.parse("android.resource://" + this.getPackageName() + "/" + R.drawable.cat);
+        }
+        else if(view.getId() == R.id.ivDog)
+        {
+            uri = Uri.parse("android.resource://" + this.getPackageName() + "/" + R.drawable.dog);
+        }
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        intent.setType("image/jpeg");
+        Intent chooser = Intent.createChooser(intent, "Choose app");
+        startActivity(chooser);
+
     }
 
     @Override

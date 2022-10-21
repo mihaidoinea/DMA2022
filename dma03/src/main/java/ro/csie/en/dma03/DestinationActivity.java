@@ -7,7 +7,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +21,7 @@ public class DestinationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_destination);
 
         TextView values = (TextView)findViewById(R.id.txtValues);
-
+        ImageView imageView = findViewById(R.id.imageView);
         // extract any data passed by the caller
         Intent callingIntent = getIntent();
         if (callingIntent != null) {
@@ -27,6 +29,9 @@ public class DestinationActivity extends AppCompatActivity {
             Integer int1 = callingIntent.getIntExtra("IntData", -1);
 
             Toast.makeText(this, "Value:" + str, Toast.LENGTH_LONG).show();
+            Uri imageUri = (Uri) callingIntent.getParcelableExtra(Intent.EXTRA_STREAM);
+            imageView.setImageURI(imageUri);
+
         }
     }
 }

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">User Interface</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="click_me">Click me</string>
+    <string name="good_morning">Good morning!</string>
+    <string name="choice_3">Choice 3</string>
+</resources>
