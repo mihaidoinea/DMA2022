@@ -6,53 +6,64 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context=".MainActivity"
-    android:id="@+id/container">
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="btnAddTv"
-        android:text="Add TextView" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_red"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/holo_red_light"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"
-        android:text="@string/red"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" android:id="@+id/container" >
 
-    <TextView
-        android:id="@+id/text_green"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/holo_green_light"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"
-        android:text="@string/green"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="btnAddTv"
+                android:text="Add TextView" />
 
-    <TextView
-        android:id="@+id/text_blue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/holo_blue_light"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"
-        android:text="@string/blue"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/text_red"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/holo_red_light"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="@string/red"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_green"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/holo_green_light"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="@string/green"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_blue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/holo_blue_light"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="@string/blue"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

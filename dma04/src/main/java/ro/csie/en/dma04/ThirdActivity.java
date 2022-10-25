@@ -27,8 +27,11 @@ public class ThirdActivity extends AppCompatActivity {
         if(view.getId() == R.id.button4) {
             viewStub.setVisibility(View.GONE);
 
-            EditText etPass = views.findViewById(R.id.editTextTextPassword);
+            EditText etName = findViewById(R.id.editTextTextPersonName);
+
+            EditText etPass = views.findViewById(R.id.editTextTextPersonName);
             Log.d("ThirdActivity",etPass.getEditableText().toString());
+            Log.d("ThirdActivity",etName.getEditableText().toString());
         }
 
     }
