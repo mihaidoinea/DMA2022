@@ -21,13 +21,13 @@
             android:text="@string/tvTitle" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/etTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="Movie title" />
 
     </LinearLayout>
 
@@ -46,7 +46,7 @@
             android:text="@string/tvGenre" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spGenre"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:entries="@array/genre"
@@ -68,7 +68,7 @@
             android:text="@string/tvduration" />
 
         <SeekBar
-            android:id="@+id/seekBar"
+            android:id="@+id/sbDuration"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:min="60"
@@ -90,7 +90,7 @@
             android:text="@string/tvRelease" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnRelease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
