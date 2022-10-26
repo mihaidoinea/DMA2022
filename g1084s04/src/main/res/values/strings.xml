@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">g1084s04</string>
+    <string name="mvTitle">Title</string>
+    <string name="mvGenre">Genre</string>
+    <string name="mvDuration">Duration</string>
+    <string name="btnSaveMovie">Save movie</string>
 </resources>
