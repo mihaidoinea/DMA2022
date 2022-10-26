@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">g1083s04</string>
     <string name="save">Save Movie</string>
+    <string name="tvGenre">Genre</string>
+    <string name="tvduration">Duration</string>
+    <string name="tvRelease">Release</string>
+    <string name="tvTitle">Title</string>
+    <string name="btnDate">SELECT DATE</string>
+    <array name="genre">
+        <item>Adventure</item>
+        <item>Comedy</item>
+        <item>Action</item>
+        <item>Animation</item>
+        <item>Drama</item>
+    </array>
 </resources>
