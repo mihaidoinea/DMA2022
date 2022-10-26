@@ -21,7 +21,7 @@
             android:text="@string/mvTitle" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/etTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -45,9 +45,10 @@
             android:text="@string/mvGenre" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spGenre"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:entries="@array/genre"
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -66,10 +67,12 @@
             android:text="@string/mvDuration" />
 
         <SeekBar
-            android:id="@+id/seekBar"
+            android:id="@+id/sbDuration"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:max="240"
+            android:min="0" />
     </LinearLayout>
 
     <LinearLayout
@@ -87,7 +90,7 @@
             android:text="Release:" />
 
         <EditText
-            android:id="@+id/editTextDate"
+            android:id="@+id/etDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

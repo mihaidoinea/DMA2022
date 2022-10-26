@@ -4,4 +4,11 @@
     <string name="mvGenre">Genre</string>
     <string name="mvDuration">Duration</string>
     <string name="btnSaveMovie">Save movie</string>
+    <array name="genre">
+        <item>ADVENTURE</item>
+        <item>ACTION</item>
+        <item>COMEDY</item>
+        <item>DRAMA</item>
+        <item>ANIMATION</item>
+    </array>
 </resources>

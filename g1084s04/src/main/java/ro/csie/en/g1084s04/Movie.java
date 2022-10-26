@@ -7,16 +7,16 @@ public class Movie {
     private String title;
     private Genre genre;
     private Date release;
-    private float budget;
+    private Integer duration;
 
     public Movie() {
     }
 
-    public Movie(String title, Genre genre, Date release, float budget) {
+    public Movie(String title, Genre genre, Date release, Integer duration) {
         this.title = title;
         this.genre = genre;
         this.release = release;
-        this.budget = budget;
+        this.duration = duration;
     }
 
     public String getTitle() {
@@ -43,12 +43,12 @@ public class Movie {
         this.release = release;
     }
 
-    public float getBudget() {
-        return budget;
+    public Integer getDuration() {
+        return duration;
     }
 
-    public void setBudget(float budget) {
-        this.budget = budget;
+    public void setDuration(Integer duration) {
+        this.duration = duration;
     }
 
     @Override
@@ -57,7 +57,7 @@ public class Movie {
                 "title='" + title + '\'' +
                 ", genre=" + genre +
                 ", release=" + release +
-                ", budget=" + budget +
+                ", duration=" + duration +
                 '}';
     }
 }
