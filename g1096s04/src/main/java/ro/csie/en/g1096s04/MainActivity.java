@@ -2,15 +2,30 @@ package ro.csie.en.g1096s04;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnSave;
+    Button btnSave, btnRelease;
+    Spinner spGenre;
+    SeekBar sbDuration;
+    EditText etTitle;
+
+    Movie movie;
 
     class MyOnClickListener implements View.OnClickListener
     {
@@ -25,7 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        movie = new Movie();
         initializeControls();
+
         getLifecycle().addObserver(new MyObserver());
         btnSave.setOnClickListener(this);
         btnSave.setOnClickListener(new MyOnClickListener());
@@ -36,12 +54,71 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(getApplicationContext(), "Movie saved!", Toast.LENGTH_LONG).show();
             }
         });
-        btnSave.setOnClickListener(view -> Toast.makeText(getApplicationContext(), "Movie saved!", Toast.LENGTH_LONG).show());
+        btnSave.setOnClickListener(view ->
+        {
+            String title = etTitle.getText().toString();
+            movie.setTitle(title);
+            Toast.makeText(getApplicationContext(), "Movie: " +movie, Toast.LENGTH_LONG).show();
+        });
 
     }
 
     private void initializeControls() {
         btnSave = findViewById(R.id.btnSave);
+        btnRelease = findViewById(R.id.btnRelease);
+        btnRelease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar c = Calendar.getInstance();
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dpd = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                        c.set(Calendar.YEAR, year);
+                        c.set(Calendar.MONTH, month);
+                        c.set(Calendar.DAY_OF_MONTH, day);
+                        Date release = c.getTime();
+                        movie.setRelease(release);
+                        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy");
+                        btnRelease.setText(sdf.format(release));
+                    }
+                }, year, month, day);
+                dpd.show();
+            }
+        });
+        etTitle = findViewById(R.id.etTitle);
+        spGenre = findViewById(R.id.spGenre);
+        spGenre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String s = adapterView.getItemAtPosition(i).toString();
+                movie.setGenre(Genre.valueOf(s));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        sbDuration = findViewById(R.id.sbDuration);
+        sbDuration.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                movie.setDuration(i);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     @Override
