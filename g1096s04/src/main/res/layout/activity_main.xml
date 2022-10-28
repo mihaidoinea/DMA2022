@@ -87,6 +87,13 @@
             android:textSize="11pt"
             android:text="@string/release_date" />
 
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Switch" />
+
         <Button
             android:id="@+id/btnRelease"
             android:layout_width="0dp"

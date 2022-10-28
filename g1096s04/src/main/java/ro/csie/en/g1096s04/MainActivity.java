@@ -8,10 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Spinner spGenre;
     SeekBar sbDuration;
     EditText etTitle;
+    Switch aSwitch;
 
     Movie movie;
 
@@ -119,6 +122,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+
+        aSwitch = findViewById(R.id.switch1);
+        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                movie.setRecommended(b);
+            }
+        });
+
     }
 
     @Override

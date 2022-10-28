@@ -8,6 +8,7 @@ public class Movie {
     private Genre genre;
     private Date release;
     private Integer duration;
+    private Boolean recommended;
 
     public Movie() {
     }
@@ -51,6 +52,10 @@ public class Movie {
         this.duration = duration;
     }
 
+    public void setRecommended(Boolean recommended) {
+        this.recommended = recommended;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
@@ -58,6 +63,7 @@ public class Movie {
                 ", genre=" + genre +
                 ", release=" + release +
                 ", duration=" + duration +
+                ", recommended=" + recommended +
                 '}';
     }
 }
