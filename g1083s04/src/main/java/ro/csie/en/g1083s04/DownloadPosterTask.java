@@ -29,6 +29,7 @@ public class DownloadPosterTask implements Callable<Bitmap> {
         } finally {
             connection.disconnect();
         }
+
         return bitmap;
     }
 
