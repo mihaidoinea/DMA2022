@@ -28,7 +28,6 @@ public class CustomAdapter extends BaseAdapter implements AdapterView.OnItemClic
             hashMap.put(item.getId(), item.getActive());
         }
     }
-
     @Override
     public int getCount() {
         return itemArray.size();
