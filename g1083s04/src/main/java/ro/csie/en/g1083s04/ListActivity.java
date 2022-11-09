@@ -28,8 +28,9 @@ public class ListActivity extends AppCompatActivity {
         Bundle extras = intent.getExtras();
         Movie movie = extras.getParcelable("movie");
         movieList.add(movie);
+
         recyclerView = findViewById(R.id.rvMovies);
-        executorService = Executors.newSingleThreadExecutor();
+        executorService = Executors.newFixedThreadPool(4);
         MovieAdapter movieAdapter = new MovieAdapter(this, movieList, executorService);
         recyclerView.setAdapter(movieAdapter);
     }
