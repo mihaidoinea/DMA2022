@@ -3,7 +3,9 @@ package ro.csie.en.g1083s04;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Spinner spGenre;
     private SeekBar sbDuration;
     private Movie movie;
+    private String TAG = MainActivity.class.getSimpleName();
 
     class MyOnClickListener implements View.OnClickListener
     {
@@ -53,7 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSave.setOnClickListener(view ->
         {
             movie.setTitle(etTitle.getText().toString());
-            Toast.makeText(getApplicationContext(),"Movie: " + movie, Toast.LENGTH_LONG).show();
+            Log.d(TAG, movie.toString());
+            Intent intent = new Intent(MainActivity.this, ListActivity.class);
+            intent.putExtra("movie",movie);
+            startActivity(intent);
         });
     }
 

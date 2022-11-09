@@ -7,8 +7,17 @@ public class Movie {
     private Genre genre;
     private Date release;
     private Integer duration;
+    private String poster;
 
     public Movie() {
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 
     public Movie(String title, Genre genre, Date release, Integer duration) {
@@ -57,6 +66,7 @@ public class Movie {
                 ", genre=" + genre +
                 ", release=" + release +
                 ", duration=" + duration +
+                ", poster='" + poster + '\'' +
                 '}';
     }
 }
