@@ -51,6 +51,7 @@ public class AppsActivity extends AppCompatActivity implements View.OnClickListe
         if (btnClick == R.id.btnSetAlarm) {
             final String message = "Time to wake up!";
             final int hour = 6;
+
             final int minutes = 30;
 
             // Create an intent to tell the system to set an alarm
