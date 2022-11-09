@@ -51,10 +51,13 @@ public class MovieAdapter extends  RecyclerView.Adapter<MovieAdapter.MovieHolder
         holder.tvBudgetGenre.setText(format);
         /// handle image download
         int resid = mContext.getResources().getIdentifier(item.getTitle(), "string", mContext.getPackageName());
-        Future future = executorService.submit(new DownloadPosterTask(mContext.getString(resid)));
+        Future future = null;
+        if(resid != 0)
+            future = executorService.submit(new DownloadPosterTask(mContext.getString(resid)));
 
         try {
-            holder.ivPoster.setImageBitmap((Bitmap) future.get());
+            if(future != null)
+                holder.ivPoster.setImageBitmap((Bitmap) future.get());
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
