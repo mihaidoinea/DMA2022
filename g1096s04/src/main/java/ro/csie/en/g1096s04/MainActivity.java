@@ -3,6 +3,7 @@ package ro.csie.en.g1096s04;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -59,9 +60,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         btnSave.setOnClickListener(view ->
         {
-            String title = etTitle.getText().toString();
-            movie.setTitle(title);
-            Toast.makeText(getApplicationContext(), "Movie: " +movie, Toast.LENGTH_LONG).show();
+            movie.setTitle(etTitle.getText().toString());
+            Intent intent = new Intent(MainActivity.this, ListActivity.class);
+            intent.putExtra("movie",movie);
+            startActivity(intent);
         });
 
     }
