@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
             downloadThreadTask.start();
         });
     }
-
     @Override
     protected void onPause() {
         executorService.shutdown();
