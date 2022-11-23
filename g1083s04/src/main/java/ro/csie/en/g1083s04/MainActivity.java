@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -30,6 +31,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String TAG = MainActivity.class.getSimpleName();
 
     public void readJson(View view) {
+        String jsonMovieArray = JsonUtil.getJsonFromResource(this, R.raw.movies_json);
+        Log.d(TAG, "Json movies: " +jsonMovieArray);
+        ArrayList<Movie> movies = JsonUtil.readJson(jsonMovieArray);
+
+        Intent intent = new Intent(MainActivity.this, ListActivity.class);
+        intent.putParcelableArrayListExtra("movies", movies);
+        startActivity(intent);
 
     }
 
@@ -49,9 +57,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initializeControls();
         movie = new Movie();
-
-        String jsonMovieArray = JsonUtil.getJsonFromResource(this, R.raw.movies_json);
-        Log.d(TAG, "Json movies: " +jsonMovieArray);
 
         btnSave.setOnClickListener(this);
         btnSave.setOnClickListener(new MyOnClickListener());
