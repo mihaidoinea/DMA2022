@@ -66,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
         thread.start();
     }
 
+    public void postJson(View view)
+    {
+
+    }
+
     private void trustEveryone() {
         try {
             HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier(){

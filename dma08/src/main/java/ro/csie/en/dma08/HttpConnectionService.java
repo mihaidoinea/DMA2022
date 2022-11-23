@@ -47,5 +47,10 @@ public class HttpConnectionService {
         Log.d(TAG, "Stop:"+jsonFile.toString());
         return jsonFile.toString();
     }
+
+    public String postData(String jsonArray)
+    {
+        return null;
+    }
 }
 
