@@ -13,7 +13,6 @@ import java.util.concurrent.Callable;
 public class DownloadPosterTask implements Callable<Bitmap> {
 
     private String imageUrl;
-
     public Bitmap getImage() {
         HttpURLConnection connection = null;
         Bitmap bitmap = null;
