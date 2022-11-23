@@ -17,8 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -27,6 +29,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Spinner spGenre;
     private SeekBar sbDuration;
     Movie movie = null;
+    private String TAG = MainActivity.class.getSimpleName();
+
+    public void parseJson(View view) {
+        String result = JsonUtil.getJsonFromResource(this,R.raw.movies_json);
+        Log.d(TAG, result);
+        ArrayList<Movie> movieList = JsonUtil.getFromJson(result);
+        Intent intent = new Intent(MainActivity.this, ListActivity.class);
+        intent.putParcelableArrayListExtra("movies", movieList);
+        startActivity(intent);
+    }
 
     class MyOnClickListener implements View.OnClickListener
     {
@@ -42,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getLifecycle().addObserver(new MyObservable());
+
+
 
         movie = new Movie();
         initializeControls();
