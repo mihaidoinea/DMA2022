@@ -3,14 +3,34 @@ package ro.csie.en.g1083s04;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.util.Date;
 import java.util.Objects;
 
+@Entity(tableName = "movie")
 public class Movie implements Parcelable {
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    private long movieId;
+
+    @ColumnInfo(name = "title")
     private String title;
+
+    @ColumnInfo(name = "genre")
     private Genre genre;
+
+    @ColumnInfo(name = "release")
     private Date release;
+
+    @ColumnInfo(name = "duration")
     private Integer duration;
+
+    @Ignore
     private String poster;
 
     @Override

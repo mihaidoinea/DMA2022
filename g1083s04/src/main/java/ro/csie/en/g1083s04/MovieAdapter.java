@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,14 +22,16 @@ import java.util.concurrent.Future;
 public class MovieAdapter extends  RecyclerView.Adapter<MovieAdapter.MovieHolder> {
 
 
+    private final MovieDao movieDao;
     private List<Movie> mItems;
     private Context mContext;
     ExecutorService executorService;
 
-    public MovieAdapter(Context context, List<Movie> movieList, ExecutorService executorService) {
+    public MovieAdapter(Context context, List<Movie> movieList, ExecutorService executorService, MovieDao movieDao) {
         this.mContext = context;
         this.mItems = movieList;
         this.executorService = executorService;
+        this.movieDao = movieDao;
     }
 
     @NonNull
@@ -69,6 +71,12 @@ public class MovieAdapter extends  RecyclerView.Adapter<MovieAdapter.MovieHolder
                 Toast.makeText(mContext, "Clicked: " + item, Toast.LENGTH_SHORT).show();
             }
         });
+        holder.btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                movieDao.insert(item);
+            }
+        });
     }
 
     @Override
@@ -82,6 +90,7 @@ public class MovieAdapter extends  RecyclerView.Adapter<MovieAdapter.MovieHolder
         public TextView tvRelease;
         public TextView tvBudgetGenre;
         public ImageView ivPoster;
+        public Button btnSave;
         public View mView;
 
         public MovieHolder(@NonNull View itemView) {
@@ -91,6 +100,7 @@ public class MovieAdapter extends  RecyclerView.Adapter<MovieAdapter.MovieHolder
             tvRelease = itemView.findViewById(R.id.tvRelease);
             tvBudgetGenre = itemView.findViewById(R.id.tvBudgetGenre);
             ivPoster = itemView.findViewById(R.id.imageView);
+            btnSave = itemView.findViewById(R.id.button2);
         }
     }
 }

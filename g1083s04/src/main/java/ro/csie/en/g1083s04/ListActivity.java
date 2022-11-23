@@ -24,6 +24,10 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+
+        DatabaseManager databaseManager = DatabaseManager.getInstance(this);
+        MovieDao movieDao = databaseManager.getMovieDao();
+
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         ArrayList<Movie> movies = extras.getParcelableArrayList("movies");
@@ -36,7 +40,7 @@ public class ListActivity extends AppCompatActivity {
         }
         recyclerView = findViewById(R.id.rvMovies);
         executorService = Executors.newFixedThreadPool(4);
-        MovieAdapter movieAdapter = new MovieAdapter(this, movieList, executorService);
+        MovieAdapter movieAdapter = new MovieAdapter(this, movieList, executorService, movieDao);
         recyclerView.setAdapter(movieAdapter);
     }
 

@@ -10,7 +10,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 public class JsonUtil {
@@ -31,7 +34,7 @@ public class JsonUtil {
     }
 
     public static ArrayList<Movie> getFromJson(String jsonArrayString) {
-        ArrayList<Movie> results = null;
+        ArrayList<Movie> results = new ArrayList<>();
         try {
             JSONArray jsonArray = new JSONArray(jsonArrayString);
             for(int index = 0; index<jsonArray.length(); index++)
@@ -41,13 +44,20 @@ public class JsonUtil {
                 results.add(movie);
             }
 
-        } catch (JSONException e) {
+        } catch (JSONException | ParseException e) {
             e.printStackTrace();
         }
         return results;
     }
 
-    private static Movie readMovieFromJson(JSONObject jsonObject) {
-
+    private static Movie readMovieFromJson(JSONObject jsonObject) throws JSONException, ParseException {
+        String movieTitle = jsonObject.getString("title");
+        String genre = jsonObject.getString("genre");
+        Genre movieGenre = Genre.valueOf(genre);
+        String release = jsonObject.getString("release");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date movieRelease = simpleDateFormat.parse(release);
+        int movieDuration = jsonObject.getInt("duration");
+        return new Movie(movieTitle, movieGenre, movieRelease, movieDuration);
     }
 }
