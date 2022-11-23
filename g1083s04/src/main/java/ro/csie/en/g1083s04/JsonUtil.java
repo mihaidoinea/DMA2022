@@ -10,7 +10,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 public class JsonUtil {
@@ -40,13 +43,20 @@ public class JsonUtil {
                 Movie movie = readJsonObject(jsonObject);
                 result.add(movie);
             }
-        } catch (JSONException e) {
+        } catch (JSONException | ParseException e) {
             e.printStackTrace();
         }
         return result;
     }
 
-    private static Movie readJsonObject(JSONObject jsonObject) {
-        jsonObject
+    private static Movie readJsonObject(JSONObject jsonObject) throws JSONException, ParseException {
+        String movieTitle = jsonObject.getString("title");
+        String genre = jsonObject.getString("genre");
+        Genre movieGenre = Genre.valueOf(genre);
+        String release = jsonObject.getString("release");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        Date movieRelease = sdf.parse(release);
+        int movieDuration = jsonObject.getInt("duration");
+        return new Movie(movieTitle,movieGenre,movieRelease, movieDuration);
     }
 }

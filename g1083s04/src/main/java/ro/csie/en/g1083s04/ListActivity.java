@@ -26,9 +26,14 @@ public class ListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        Movie movie = extras.getParcelable("movie");
-        movieList.add(movie);
-
+        ArrayList<Movie> movies = extras.getParcelableArrayList("movies");
+        if(movies != null)
+            if(!movieList.containsAll(movies))
+                movieList.addAll(movies);
+        else {
+            Movie movie = extras.getParcelable("movie");
+            movieList.add(movie);
+        }
         recyclerView = findViewById(R.id.rvMovies);
         executorService = Executors.newFixedThreadPool(4);
         MovieAdapter movieAdapter = new MovieAdapter(this, movieList, executorService);
