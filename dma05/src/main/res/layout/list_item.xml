@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/item_list">
+    android:id="@+id/item_list"
+    android:background="@drawable/item_background">
 
     <TextView
         android:id="@+id/txtId"
