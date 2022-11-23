@@ -27,7 +27,6 @@ public class HttpConnectionService {
         StringBuilder jsonFile = new StringBuilder();
         HttpURLConnection connection = null;
         try {
-            Log.d(TAG, "Start" + jsonFile.toString());
             URL url = new URL(recipeJsonUrl);
             connection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = connection.getInputStream();

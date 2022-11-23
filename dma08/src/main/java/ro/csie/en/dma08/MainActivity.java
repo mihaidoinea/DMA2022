@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnPost;
     private TextView tvPostResult;
     private List<Recipe> recipes= new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +51,14 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                        //1.parsing the json result to a list of Recipe objects
+                        List<Recipe> results = RecipeJsonParser.fromJson(recipeJSONArray);
+                        if(!recipes.containsAll(results))
+                            recipes.addAll(results);
+                        for(Recipe recipe: recipes)
+                        {
+                            Log.d(TAG, "Recipe:" + recipe);
+                        }
                     }
                 });
             }
