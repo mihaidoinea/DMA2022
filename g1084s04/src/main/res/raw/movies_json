@@ -1,0 +1,20 @@
+[
+  {
+    "title":"Manifest",
+    "genre":"Drama",
+    "release":"12-12-2022",
+    "duration":"120"
+  },
+  {
+    "title":"Extraction",
+    "genre":"Action",
+    "release":"11-11-2022",
+    "duration":"68"
+  },
+  {
+    "title":"Enola",
+    "genre":"Adventure",
+    "release":"10-10-2022",
+    "duration":"90"
+  }
+]
