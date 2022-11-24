@@ -37,4 +37,27 @@ public class RecipeJsonParser {
         String category = jsonObject.getString("categorie");
         return new Recipe(name, description, date,calories, category);
     }
+
+    public static String toJson(List<Recipe> recipes) {
+        JSONArray array = new JSONArray();
+        try {
+            for (Recipe recipe:recipes) {
+                JSONObject jsonObject = writeRecipe(recipe);
+                array.put(jsonObject);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return array.toString();
+    }
+
+    private static JSONObject writeRecipe(Recipe recipe) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("denumire", recipe.getDenumire());
+        jsonObject.put("descriere", recipe.getDescriere());
+        jsonObject.put("dataAdaugarii", recipe.getDataAdaugarii());
+        jsonObject.put("calorii", recipe.getCalorii());
+        jsonObject.put("categorie", recipe.getCategorie());
+        return jsonObject;
+    }
 }

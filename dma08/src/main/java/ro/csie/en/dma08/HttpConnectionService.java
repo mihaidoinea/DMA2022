@@ -48,9 +48,38 @@ public class HttpConnectionService {
         return jsonFile.toString();
     }
 
-    public String postData(String jsonArray)
-    {
-        return null;
+    public String postData(String jsonArray) {
+        HttpURLConnection connection = null;
+        StringBuilder result = new StringBuilder();
+        try {
+            URL url = new URL(recipeJsonUrl);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setDoOutput(true);
+
+            OutputStream outputStream = connection.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+            writer.write(jsonArray);
+            writer.close();
+            outputStream.close();
+
+            InputStream inputStream = connection.getInputStream();
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                result.append(line);
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            connection.disconnect();
+        }
+        return result.toString();
     }
 }
 

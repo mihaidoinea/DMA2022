@@ -68,7 +68,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void postJson(View view)
     {
-
+        Thread thread= new Thread()
+        {
+            @Override
+            public void run() {
+                HttpConnectionService httpConnectionService = new HttpConnectionService(RECIPE_POST_JSON);
+                String jsonArray = RecipeJsonParser.toJson(recipes);
+                String value = httpConnectionService.postData(jsonArray);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvPostResult.setText(value);
+                    }
+                });
+            }
+        };
+        thread.start();
     }
 
     private void trustEveryone() {
