@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.stream.Collectors;
@@ -39,14 +40,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void readJson(View view) throws IOException {
 
+        String collect = null;
         try(InputStream inputStream = getResources().openRawResource(R.raw.movie_json))
         {
-            String collect = new BufferedReader(new InputStreamReader(inputStream))
+            collect = new BufferedReader(new InputStreamReader(inputStream))
                     .lines()
                     .parallel()
                     .collect(Collectors.joining("\n"));
             Log.d(TAG,"Json file:" + collect);
         }
+        ArrayList<Movie> movies = JSONUtil.getJsonFromString(collect);
     }
 
     class MyOnClickListener implements View.OnClickListener
