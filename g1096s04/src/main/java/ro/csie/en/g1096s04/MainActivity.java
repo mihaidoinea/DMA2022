@@ -17,12 +17,18 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
     Button btnSave, btnRelease;
     Spinner spGenre;
     SeekBar sbDuration;
@@ -30,6 +36,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Switch aSwitch;
 
     Movie movie;
+
+    public void readJson(View view) throws IOException {
+
+        try(InputStream inputStream = getResources().openRawResource(R.raw.movie_json))
+        {
+            String collect = new BufferedReader(new InputStreamReader(inputStream))
+                    .lines()
+                    .parallel()
+                    .collect(Collectors.joining("\n"));
+            Log.d(TAG,"Json file:" + collect);
+        }
+    }
 
     class MyOnClickListener implements View.OnClickListener
     {
