@@ -7,6 +7,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import java.util.Date;
 import java.util.Objects;
@@ -25,6 +26,7 @@ public class Movie implements Parcelable {
     private Genre genre;
 
     @ColumnInfo(name = "release")
+    @TypeConverters(DateConverter.class)
     private Date release;
 
     @ColumnInfo(name = "duration")
@@ -148,5 +150,13 @@ public class Movie implements Parcelable {
                 ", duration=" + duration +
                 ", poster='" + poster + '\'' +
                 '}';
+    }
+
+    public long getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(long movieId) {
+        this.movieId = movieId;
     }
 }

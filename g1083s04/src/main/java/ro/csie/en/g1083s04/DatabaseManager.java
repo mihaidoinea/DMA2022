@@ -5,8 +5,10 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 @Database(entities = {Movie.class}, exportSchema = false, version = 1)
+@TypeConverters({DateConverter.class})
 public abstract class DatabaseManager extends RoomDatabase {
 
     private static final String DB_NAME = "g1083_db";
