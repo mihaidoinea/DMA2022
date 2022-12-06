@@ -44,6 +44,11 @@
                 android:layout_height="wrap_content"
                 android:textSize="8pt"
                 android:text="TextView" />
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
