@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.concurrent.Future;
 
 public class ListActivity extends AppCompatActivity {
 
+    private static final String TAG = ListActivity.class.getSimpleName();
     static List<Movie> movieList = new ArrayList<>();
     RecyclerView recyclerView;
     ExecutorService executorService;
@@ -31,12 +33,14 @@ public class ListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         ArrayList<Movie> movies = extras.getParcelableArrayList("movies");
-        if(movies != null)
-            if(!movieList.containsAll(movies))
+        if(movies != null) {
+            if (!movieList.containsAll(movies))
                 movieList.addAll(movies);
+        }
         else {
             Movie movie = extras.getParcelable("movie");
             movieList.add(movie);
+            Log.d(TAG, movie.toString());
         }
         recyclerView = findViewById(R.id.rvMovies);
         executorService = Executors.newFixedThreadPool(4);
