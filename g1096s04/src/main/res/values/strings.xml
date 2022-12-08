@@ -9,11 +9,11 @@
     <string name="save_movie">Save movie</string>
 
     <array name="genre">
-        <item>Adventure</item>
-        <item>Comedy</item>
-        <item>Action</item>
-        <item>Drama</item>
-        <item>Animation</item>
+        <item>ADVENTURE</item>
+        <item>COMEDY</item>
+        <item>ACTION</item>
+        <item>DRAMA</item>
+        <item>ANIMATION</item>
     </array>
     <string name="Enola">https://www.urban.ro/wp-content/uploads/2020/09/enolaholmesposter.jpg</string>
     <string name="Manifest">https://flxt.tmsimg.com/assets/p17602726_b_v13_ab.jpg</string>

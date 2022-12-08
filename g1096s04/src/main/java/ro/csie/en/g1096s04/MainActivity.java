@@ -50,6 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.d(TAG,"Json file:" + collect);
         }
         ArrayList<Movie> movies = JSONUtil.getJsonFromString(collect);
+
+        Intent intent = new Intent(MainActivity.this, ListActivity.class);
+        intent.putParcelableArrayListExtra("movies", movies);
+        startActivity(intent);
     }
 
     class MyOnClickListener implements View.OnClickListener

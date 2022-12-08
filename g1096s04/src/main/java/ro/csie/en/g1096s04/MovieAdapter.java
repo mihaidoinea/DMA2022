@@ -9,6 +9,7 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,20 +19,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
 
 public class MovieAdapter extends  RecyclerView.Adapter<MovieAdapter.MovieHolder> {
 
     private List<Movie> mItems;
     private Context mContext;
     ExecutorService executorService;
+    private MovieDao movieDao;
     Handler uiHandler;
-    public MovieAdapter(Context context, List<Movie> movieList, ExecutorService executorService) {
+    public MovieAdapter(Context context, List<Movie> movieList, ExecutorService executorService, MovieDao movieDao) {
         this.mContext = context;
         this.mItems = movieList;
         this.executorService = executorService;
+        this.movieDao = movieDao;
     }
 
     @NonNull
@@ -74,6 +75,12 @@ public class MovieAdapter extends  RecyclerView.Adapter<MovieAdapter.MovieHolder
                 Toast.makeText(mContext, "Clicked: " + item, Toast.LENGTH_SHORT).show();
             }
         });
+        holder.btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                movieDao.insert(item);
+            }
+        });
     }
 
     @Override
@@ -87,6 +94,7 @@ public class MovieAdapter extends  RecyclerView.Adapter<MovieAdapter.MovieHolder
         public TextView tvRelease;
         public TextView tvBudgetGenre;
         public ImageView ivPoster;
+        public Button btnSave;
         public View mView;
 
         public MovieHolder(@NonNull View itemView) {
@@ -96,6 +104,7 @@ public class MovieAdapter extends  RecyclerView.Adapter<MovieAdapter.MovieHolder
             tvRelease = itemView.findViewById(R.id.tvRelease);
             tvBudgetGenre = itemView.findViewById(R.id.tvBudgetGenre);
             ivPoster = itemView.findViewById(R.id.imageView);
+            btnSave = itemView.findViewById(R.id.button2);
         }
     }
 }

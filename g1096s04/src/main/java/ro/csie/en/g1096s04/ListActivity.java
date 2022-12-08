@@ -22,14 +22,23 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        DatabaseManager databaseManager = DatabaseManager.getInstance(this);
+        MovieDao movieDao = databaseManager.getMovieDao();
+
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        Movie movie = extras.getParcelable("movie");
-        movieList.add(movie);
-
+        ArrayList<Movie> movies = extras.getParcelableArrayList("movies");
+        if(movies != null && movies.size() > 0)
+        {
+            movieList.addAll(movies);
+        }
+        else {
+            Movie movie = extras.getParcelable("movie");
+            movieList.add(movie);
+        }
         recyclerView = findViewById(R.id.rvMovies);
         executorService = Executors.newFixedThreadPool(4);
-        MovieAdapter movieAdapter = new MovieAdapter(this, movieList, executorService);
+        MovieAdapter movieAdapter = new MovieAdapter(this, movieList, executorService, movieDao);
         recyclerView.setAdapter(movieAdapter);
     }
 

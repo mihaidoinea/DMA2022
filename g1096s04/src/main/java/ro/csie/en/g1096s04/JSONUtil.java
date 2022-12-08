@@ -4,7 +4,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class JSONUtil {
 
@@ -20,14 +23,21 @@ public class JSONUtil {
                     result = new ArrayList<>();
                 result.add(movie);
             }
-        } catch (JSONException e) {
+        } catch (JSONException | ParseException e) {
             e.printStackTrace();
         }
         return result;
     }
 
-    private static Movie readMovie(JSONObject jsonObject) throws JSONException {
+    private static Movie readMovie(JSONObject jsonObject) throws JSONException, ParseException {
         String movieTitle = jsonObject.getString("title");
+        String genre = jsonObject.getString("genre");
+        Genre movieGenre = Genre.valueOf(genre);
+        String release = jsonObject.getString("release");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date movieRelease = simpleDateFormat.parse(release);
+        int movieDuration = jsonObject.getInt("duration");
+        return new Movie(movieTitle, movieGenre, movieRelease, movieDuration);
 
     }
 }
