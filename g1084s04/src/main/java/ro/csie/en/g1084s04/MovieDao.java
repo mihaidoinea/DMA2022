@@ -12,7 +12,7 @@ import java.util.List;
 public interface MovieDao {
 
     @Query("select * from movie")
-    List<Movie> getAll();
+    List<Movie> getAllMovies();
 
     @Query("select * from movie where id=:movieId")
     Movie getMovieById(long movieId);

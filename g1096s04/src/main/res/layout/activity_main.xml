@@ -122,4 +122,11 @@
         android:layout_height="wrap_content"
         android:text="@string/read_json"
         android:onClick="readJson"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/view_chart"
+        android:onClick="viewChart"/>
 </LinearLayout>

@@ -1,5 +1,7 @@
 package ro.csie.en.g1096s04;
 
+import android.database.Cursor;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -13,6 +15,9 @@ public interface MovieDao {
 
     @Query("select * from movie")
     List<Movie> getAllMovies();
+
+    @Query("select * from movie")
+    Cursor getCursorMovies();
 
     @Query("select * from movie where id=:movieId")
     Movie getMovieById(long movieId);

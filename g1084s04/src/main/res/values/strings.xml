@@ -15,5 +15,6 @@
     <string name="Manifest">https://flxt.tmsimg.com/assets/p17602726_b_v13_ab.jpg</string>
     <string name="Extraction">https://m.media-amazon.com/images/M/MV5BNDBkOWNiMTYtMjlkZS00NzJlLTg0ZmUtN2YwYWQ3N2I3N2Y0XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg</string>
     <string name="parse_json">Parse JSON</string>
+    <string name="view_chart">View Chart</string>
 
 </resources>

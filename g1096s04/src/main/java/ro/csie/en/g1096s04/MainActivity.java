@@ -25,6 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -54,6 +55,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(MainActivity.this, ListActivity.class);
         intent.putParcelableArrayListExtra("movies", movies);
         startActivity(intent);
+    }
+
+    public void viewChart(View view) {
+        DatabaseManager db = DatabaseManager.getInstance(this);
+        MovieDao movieDao = db.getMovieDao();
+
+        List<Movie> allMovies = movieDao.getAllMovies();
+        MovieChart movieChart = new MovieChart(this, allMovies);
+        setContentView(movieChart);
+
     }
 
     class MyOnClickListener implements View.OnClickListener

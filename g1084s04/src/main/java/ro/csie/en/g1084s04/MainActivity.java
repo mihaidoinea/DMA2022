@@ -40,6 +40,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
+    public void viewChart(View view) {
+        DatabaseManager dbManager = DatabaseManager.getInstance(this);
+        MovieDao movieDao = dbManager.getMovieDao();
+
+        List<Movie> all = movieDao.getAllMovies();
+
+        MovieChart movieChart = new MovieChart(this, all);
+        setContentView(movieChart);
+    }
+
     class MyOnClickListener implements View.OnClickListener
     {
         @Override
