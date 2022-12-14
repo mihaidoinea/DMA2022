@@ -51,6 +51,7 @@ public class Movie implements Parcelable {
     public Movie() {
     }
 
+    @Ignore
     protected Movie(Parcel in) {
         title = in.readString();
         release = new Date(in.readLong());
