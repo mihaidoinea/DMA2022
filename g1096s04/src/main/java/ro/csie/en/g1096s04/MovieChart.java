@@ -57,8 +57,19 @@ public class MovieChart extends View {
             int value = stats.get(genre);
             paint.setColor(color);
             drawColumn(canvas, maxValue, colWidth, currColumn, value);
+            drawLabel(canvas, colWidth, currColumn, genre, value);
             currColumn++;
         }
+    }
+
+    private void drawLabel(Canvas canvas, float colWidth, int currColumn, String genre, int value) {
+        paint.setColor(Color.BLACK);
+        paint.setTextSize((float) (0.4 * colWidth));
+        float x = (float)((currColumn +  0.5) * colWidth);
+        float y = (float)(0.9 * getHeight());
+        canvas.rotate(270, x,y);
+        canvas.drawText(genre +":" + value,x,y, paint);
+        canvas.rotate(-270, x, y);
     }
 
     private void drawColumn(Canvas canvas, int maxValue, float colWidth, int currColumn, int value) {
