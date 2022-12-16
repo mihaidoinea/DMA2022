@@ -30,6 +30,7 @@ import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //https://jsonkeeper.com/b/708X
     private static final String TAG = MainActivity.class.getSimpleName();
     Button btnSave, btnRelease;
     Spinner spGenre;
