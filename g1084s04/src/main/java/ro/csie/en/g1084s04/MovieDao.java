@@ -11,6 +11,7 @@ import java.util.List;
 @Dao
 public interface MovieDao {
 
+
     @Query("select * from movie")
     List<Movie> getAllMovies();
 
