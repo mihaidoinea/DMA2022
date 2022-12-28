@@ -9,6 +9,7 @@ import androidx.room.TypeConverters;
 
 @Database(entities = {Movie.class}, exportSchema = false, version = 1)
 @TypeConverters({DateConverter.class})
+
 public abstract class DatabaseManager extends RoomDatabase {
 
     private static final String DB_NAME = "g1096_db";
