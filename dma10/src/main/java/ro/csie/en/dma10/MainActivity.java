@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnOpenSharedPrefs;
     EditText etUserName;
     SharedPreferences sharedPreferences;
+
     SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
