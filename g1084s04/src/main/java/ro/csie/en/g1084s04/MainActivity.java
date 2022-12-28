@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String TAG = MainActivity.class.getSimpleName();
 
     public void parseJson(View view) {
-        String result = JsonUtil.getJsonFromResource(this,R.raw.movies_json);
+        String result = JsonUtil.getJsonFromResource(this,R.raw.movies);
         Log.d(TAG, result);
         ArrayList<Movie> movieList = JsonUtil.getFromJson(result);
         Intent intent = new Intent(MainActivity.this, ListActivity.class);

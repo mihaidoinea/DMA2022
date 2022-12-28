@@ -52,10 +52,7 @@ public class MainActivity extends AppCompatActivity {
         readJsonMovies();
 
         recyclerView = findViewById(R.id.recyclerView);
-
-        firebaseService = FirebaseService.getInstance();
-        firebaseService.attachDataChangeEventListener(dataChangeCallback());
-
+        //writing to the Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("movies");
 
@@ -64,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
             int id = new Random().nextInt(99999999);
             myRef.child("movie_"+id).setValue(movie);
         }
+
+        //reading from the Firebase
+        firebaseService = FirebaseService.getInstance();
+        firebaseService.attachDataChangeEventListener(dataChangeCallback());
 
     }
 }

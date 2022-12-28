@@ -5,11 +5,11 @@
     <string name="mvDuration">Duration</string>
     <string name="btnSaveMovie">Save movie</string>
     <array name="genre">
-        <item>ADVENTURE</item>
-        <item>ACTION</item>
-        <item>COMEDY</item>
-        <item>DRAMA</item>
-        <item>ANIMATION</item>
+        <item>Adventure</item>
+        <item>Action</item>
+        <item>Comedy</item>
+        <item>Drama</item>
+        <item>Animation</item>
     </array>
     <string name="Enola">https://www.urban.ro/wp-content/uploads/2020/09/enolaholmesposter.jpg</string>
     <string name="Manifest">https://flxt.tmsimg.com/assets/p17602726_b_v13_ab.jpg</string>

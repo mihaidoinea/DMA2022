@@ -45,8 +45,10 @@ public class MovieChart extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         int maxValue = getMaxValue();
-        float colWidth = getWidth() / stats.size();
-        drawValues(canvas, maxValue, colWidth);
+        if(stats.size() > 0) {
+            float colWidth = getWidth() / stats.size();
+            drawValues(canvas, maxValue, colWidth);
+        }
     }
 
     private void drawValues(Canvas canvas, int maxValue, float colWidth) {
